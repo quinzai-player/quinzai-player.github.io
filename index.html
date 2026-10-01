@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="title">Quinzai Player – Väntelista</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preload" as="image" href="img/hero-bio.jpg">
+</head>
+<body>
+    <div class="lang-switch-container">
+        <div class="container lang-switch">
+            <button type="button" id="lang-sv" class="active">SV</button>
+            <span>|</span>
+            <button type="button" id="lang-en">EN</button>
+        </div>
+    </div>
+
+    <header class="hero">
+        <div class="hero-bg">
+            <img src="img/hero-bio.jpg" alt="" role="presentation">
+            <div class="hero-scrim"></div>
+        </div>
+        <div class="container">
+            <h1 data-i18n="hero_title">Quinzai Player</h1>
+            <p class="subtitle" data-i18n="hero_subtitle">En modern mediaspelare för Android TV och telefon. Du tar med dina egna källor, vi sköter upplevelsen.</p>
+            <form id="waitlist-form" class="signup-form">
+                <input type="email" id="email" name="email" placeholder="Din e-postadress" data-i18n-placeholder="email_placeholder" required>
+                
+                <div class="form-group">
+                    <label for="device" data-i18n="device_label">Vilken enhet använder du främst?</label>
+                    <select id="device" name="device" required>
+                        <option value="" disabled selected data-i18n="device_option_default">Välj enhet...</option>
+                        <option value="Android TV" data-i18n="device_option_tv">Android TV</option>
+                        <option value="Google TV-dongel" data-i18n="device_option_google">Google TV-dongel</option>
+                        <option value="Android-telefon" data-i18n="device_option_phone">Android-telefon</option>
+                        <option value="Annat" data-i18n="device_option_other">Annat</option>
+                    </select>
+                </div>
+                
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="beta" name="beta">
+                        <span data-i18n="beta_label">Jag vill vara betatestare</span>
+                    </label>
+                </div>
+
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="consent" name="consent" required>
+                        <span data-i18n="consent_label">Vi sparar bara din e-post för att meddela när appen släpps. Avregistrera när som helst. <a href="#integritet">Läs om integritet</a>.</span>
+                    </label>
+                </div>
+                
+                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+                <button type="submit" id="submit-btn" data-i18n="submit_btn">Skriv upp mig</button>
+            </form>
+            <div id="form-success" class="hidden">
+                <h2 data-i18n="success_title">Tack för din anmälan!</h2>
+                <p data-i18n="success_text">Vi hör av oss när vi har nyheter att dela.</p>
+            </div>
+            <div id="form-error" class="hidden">
+                <p class="error-text" data-i18n="error_text">Något gick fel, försök igen senare.</p>
+            </div>
+        </div>
+    </header>
+
+    <section class="hooks">
+        <div class="container hooks-grid">
+            <div class="card">
+                <h3 data-i18n="hook1_title">Undertexter på ditt språk — automatiskt</h3>
+                <p data-i18n="hook1_text">Spelaren väljer rätt ljudspår och undertexter åt dig. Byggd i Sverige, svenska först. AI-genererad undertext planeras.</p>
+            </div>
+            <div class="card">
+                <h3 data-i18n="hook2_title">Modern startsida</h3>
+                <p data-i18n="hook2_text">Inga fler ändlösa mapplistor. Få en snygg översikt med affischer, rader och "fortsätt titta"-funktionalitet.</p>
+            </div>
+            <div class="card">
+                <h3 data-i18n="hook3_title">För fjärrkontroll & finger</h3>
+                <p data-i18n="hook3_text">Samma rena gränssnitt fungerar lika bra på din TV med fjärrkontroll som på din telefon med touch.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <div class="container">
+            <h2 data-i18n="how_title">Så funkar det</h2>
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4 data-i18n="step1_title">Ladda ner appen</h4>
+                    <p data-i18n="step1_text">Installera Quinzai Player på din Android TV eller telefon.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4 data-i18n="step2_title">Lägg till dina källor</h4>
+                    <p data-i18n="step2_text">Mata in din egen M3U-spellista eller Xtream-inloggning. (Stöd för Jellyfin kommer framöver).</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4 data-i18n="step3_title">Börja titta</h4>
+                    <p data-i18n="step3_text">Appen bygger upp en modern startsida baserat på ditt material.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <h2 data-i18n="faq_title">Vanliga frågor</h2>
+            <div class="faq-item">
+                <h4 data-i18n="faq1_q">Är det lagligt?</h4>
+                <p data-i18n="faq1_a">Ja. Appen innehåller inga kanaler, filmer eller spellistor. Du använder dina egna källor som du har rätt till.</p>
+            </div>
+            <div class="faq-item">
+                <h4 data-i18n="faq2_q">Vilka enheter stöds?</h4>
+                <p data-i18n="faq2_a">Appen är byggd för Android TV, Google TV-enheter (som Chromecast med Google TV) samt Android-telefoner.</p>
+            </div>
+            <div class="faq-item">
+                <h4 data-i18n="faq3_q">Vad kostar det?</h4>
+                <p data-i18n="faq3_a">Basversionen planeras att vara gratis. En Pro-version med extra funktioner planeras kosta cirka 299–399 kr/år.</p>
+            </div>
+            <div class="faq-item">
+                <h4 data-i18n="faq4_q">Vad händer med min e-post?</h4>
+                <p data-i18n="faq4_a">Vi sparar bara din e-post för att meddela när appen släpps. Avregistrera när som helst.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="integritet" class="privacy">
+        <div class="container">
+            <h2 data-i18n="privacy_title">Integritet</h2>
+            <ul>
+                <li data-i18n="privacy_what_why"><strong>Vad & varför:</strong> Vi sparar din e-post, vald enhet, betatestar-val och språk för att meddela dig när appen släpps eller bjuda in till beta.</li>
+                <li data-i18n="privacy_where"><strong>Var:</strong> I ett Google-kalkylark som ägs av utvecklaren (Google agerar personuppgiftsbiträde).</li>
+                <li data-i18n="privacy_how_long"><strong>Hur länge:</strong> Tills appen släppts plus 3 månader, eller tills du avregistrerar dig.</li>
+                <li data-i18n="privacy_rights"><strong>Dina rättigheter:</strong> Du kan när som helst begära radering eller registerutdrag via <a href="mailto:quinzai.master+player@proton.me">quinzai.master+player@proton.me</a>.</li>
+                <li data-i18n="privacy_no_tracking"><strong>Spårning:</strong> Sidan har inga spårare, inga cookies och vi delar eller säljer aldrig dina uppgifter.</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p><a href="#integritet" data-i18n="footer_privacy">Integritet</a></p>
+            <p data-i18n="footer_disclaimer1">Appen innehåller inga kanaler, filmer eller spellistor. Du använder dina egna källor som du har rätt till.</p>
+            <p class="legal-disclaimer" data-i18n="footer_disclaimer2">Bildmaterial i framtida marknadsföring är antingen mockups eller använder material under Creative Commons (t.ex. Blender Foundation, CC BY).</p>
+        </div>
+    </footer>
+
+    <script>
+        const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbyOnk7mBHFnYYAZXWEl7iqb9NhIERLHbwqDv__wMBC4lIjnIBVjT9iAqRlnjYykd5_5/exec"; // publik skrivadress, ingen hemlighet
+
+        const translations = {
+            sv: {
+                "title": "Quinzai Player – Väntelista",
+                "hero_title": "Quinzai Player",
+                "hero_subtitle": "En modern mediaspelare för Android TV och telefon. Du tar med dina egna källor, vi sköter upplevelsen.",
+                "email_placeholder": "Din e-postadress",
+                "device_label": "Vilken enhet använder du främst?",
+                "device_option_default": "Välj enhet...",
+                "device_option_tv": "Android TV",
+                "device_option_google": "Google TV-dongel",
+                "device_option_phone": "Android-telefon",
+                "device_option_other": "Annat",
+                "beta_label": "Jag vill vara betatestare",
+                "consent_label": "Vi sparar bara din e-post för att meddela när appen släpps. Avregistrera när som helst. <a href=\"#integritet\">Läs om integritet</a>.",
+                "submit_btn": "Skriv upp mig",
+                "submit_btn_sending": "Skickar...",
+                "success_title": "Tack för din anmälan!",
+                "success_text": "Vi hör av oss när vi har nyheter att dela.",
+                "error_text": "Något gick fel, försök igen senare.",
+                "hook1_title": "Undertexter på ditt språk — automatiskt",
+                "hook1_text": "Spelaren väljer rätt ljudspår och undertexter åt dig. Byggd i Sverige, svenska först. AI-genererad undertext planeras.",
+                "hook2_title": "Modern startsida",
+                "hook2_text": "Inga fler ändlösa mapplistor. Få en snygg översikt med affischer, rader och \"fortsätt titta\"-funktionalitet.",
+                "hook3_title": "För fjärrkontroll & finger",
+                "hook3_text": "Samma rena gränssnitt fungerar lika bra på din TV med fjärrkontroll som på din telefon med touch.",
+                "how_title": "Så funkar det",
+                "step1_title": "Ladda ner appen",
+                "step1_text": "Installera Quinzai Player på din Android TV eller telefon.",
+                "step2_title": "Lägg till dina källor",
+                "step2_text": "Mata in din egen M3U-spellista eller Xtream-inloggning. (Stöd för Jellyfin kommer framöver).",
+                "step3_title": "Börja titta",
+                "step3_text": "Appen bygger upp en modern startsida baserat på ditt material.",
+                "faq_title": "Vanliga frågor",
+                "faq1_q": "Är det lagligt?",
+                "faq1_a": "Ja. Appen innehåller inga kanaler, filmer eller spellistor. Du använder dina egna källor som du har rätt till.",
+                "faq2_q": "Vilka enheter stöds?",
+                "faq2_a": "Appen är byggd för Android TV, Google TV-enheter (som Chromecast med Google TV) samt Android-telefoner.",
+                "faq3_q": "Vad kostar det?",
+                "faq3_a": "Basversionen planeras att vara gratis. En Pro-version med extra funktioner planeras kosta cirka 299–399 kr/år.",
+                "faq4_q": "Vad händer med min e-post?",
+                                "faq4_a": "Vi sparar bara din e-post för att meddela när appen släpps. Avregistrera när som helst.",
+                "privacy_title": "Integritet",
+                "privacy_what_why": "<strong>Vad & varför:</strong> Vi sparar din e-post, vald enhet, betatestar-val och språk för att meddela dig när appen släpps eller bjuda in till beta.",
+                "privacy_where": "<strong>Var:</strong> I ett Google-kalkylark som ägs av utvecklaren (Google agerar personuppgiftsbiträde).",
+                "privacy_how_long": "<strong>Hur länge:</strong> Tills appen släppts plus 3 månader, eller tills du avregistrerar dig.",
+                "privacy_rights": "<strong>Dina rättigheter:</strong> Du kan när som helst begära radering eller registerutdrag via <a href=\"mailto:quinzai.master+player@proton.me\">quinzai.master+player@proton.me</a>.",
+                "privacy_no_tracking": "<strong>Spårning:</strong> Sidan har inga spårare, inga cookies och vi delar eller säljer aldrig dina uppgifter.",
+                "footer_privacy": "Integritet",
+                "footer_disclaimer1": "Appen innehåller inga kanaler, filmer eller spellistor. Du använder dina egna källor som du har rätt till.",
+                "footer_disclaimer2": "Bildmaterial i framtida marknadsföring är antingen mockups eller använder material under Creative Commons (t.ex. Blender Foundation, CC BY)."
+            },
+            en: {
+                "title": "Quinzai Player – Waitlist",
+                "hero_title": "Quinzai Player",
+                "hero_subtitle": "A modern media player for Android TV and phone. You bring your own sources, we handle the experience.",
+                "email_placeholder": "Your email address",
+                "device_label": "Which device do you primarily use?",
+                "device_option_default": "Select device...",
+                "device_option_tv": "Android TV",
+                "device_option_google": "Google TV dongle",
+                "device_option_phone": "Android phone",
+                "device_option_other": "Other",
+                "beta_label": "I want to be a beta tester",
+                "consent_label": "We only save your email to notify you when the app is released. Unsubscribe at any time. <a href=\"#integritet\">Read our privacy policy</a>.",
+                "submit_btn": "Sign me up",
+                "submit_btn_sending": "Sending...",
+                "success_title": "Thanks for signing up!",
+                "success_text": "We'll be in touch when we have news to share.",
+                "error_text": "Something went wrong, please try again later.",
+                "hook1_title": "Subtitles in your language — automatically",
+                "hook1_text": "The player picks the right audio track and subtitles for you. Made in Sweden, with Swedish fully supported from day one. AI-generated subtitles are planned.",
+                "hook2_title": "Modern home screen",
+                "hook2_text": "No more endless folder lists. Get a beautiful overview with posters, rows, and \"continue watching\" functionality.",
+                "hook3_title": "For remote & touch",
+                "hook3_text": "The same clean interface works just as well on your TV with a remote as on your phone with touch.",
+                "how_title": "How it works",
+                "step1_title": "Download the app",
+                "step1_text": "Install Quinzai Player on your Android TV or phone.",
+                "step2_title": "Add your sources",
+                "step2_text": "Enter your own M3U playlist or Xtream login. (Jellyfin support is coming later).",
+                "step3_title": "Start watching",
+                "step3_text": "The app builds a modern home screen from your own content.",
+                "faq_title": "Frequently Asked Questions",
+                "faq1_q": "Is it legal?",
+                "faq1_a": "Yes. The app does not contain any channels, movies, or playlists. You use your own sources that you have the right to.",
+                "faq2_q": "Which devices are supported?",
+                "faq2_a": "The app is built for Android TV, Google TV devices (like Chromecast with Google TV), and Android phones.",
+                "faq3_q": "How much does it cost?",
+                "faq3_a": "The base version is planned to be free. A Pro version with extra features is planned to cost around €25–35 per year.",
+                "faq4_q": "What happens to my email?",
+                                "faq4_a": "We only save your email to notify you when the app is released. Unsubscribe at any time.",
+                "privacy_title": "Privacy",
+                "privacy_what_why": "<strong>What & why:</strong> We save your email, selected device, beta tester choice, and language to notify you when the app is released or invite you to the beta.",
+                "privacy_where": "<strong>Where:</strong> In a Google Spreadsheet owned by the developer (Google acts as data processor).",
+                "privacy_how_long": "<strong>How long:</strong> Until the app is released plus 3 months, or until you unsubscribe.",
+                "privacy_rights": "<strong>Your rights:</strong> You can request deletion or a copy of your data at any time via <a href=\"mailto:quinzai.master+player@proton.me\">quinzai.master+player@proton.me</a>.",
+                "privacy_no_tracking": "<strong>Tracking:</strong> This site uses no trackers, no cookies, and we never share or sell your data.",
+                "footer_privacy": "Privacy Policy",
+                "footer_disclaimer1": "The app does not contain any channels, movies, or playlists. You use your own sources that you have the right to.",
+                "footer_disclaimer2": "Images in future marketing are either mockups or use material under Creative Commons (e.g., Blender Foundation, CC BY)."
+            }
+        };
+
+        let currentLang = 'sv';
+
+        function checkMissingKeys() {
+            const keys = new Set();
+            document.querySelectorAll('[data-i18n], [data-i18n-placeholder]').forEach(el => {
+                if (el.dataset.i18n) keys.add(el.dataset.i18n);
+                if (el.dataset.i18nPlaceholder) keys.add(el.dataset.i18nPlaceholder);
+            });
+            const missingSv = [];
+            const missingEn = [];
+            keys.forEach(key => {
+                if (!translations.sv[key]) missingSv.push(key);
+                if (!translations.en[key]) missingEn.push(key);
+            });
+            if (missingSv.length > 0 || missingEn.length > 0) {
+                console.warn("Saknade i18n-nycklar (sv):", missingSv);
+                console.warn("Missing i18n keys (en):", missingEn);
+            }
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            
+            try {
+                localStorage.setItem('quinzai_lang', lang);
+            } catch (e) {
+                // Ignore if localStorage is blocked
+            }
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    // Om det är <title> ändrar vi textContent, funkar för alla element
+                    if (el.tagName === 'TITLE') {
+                        document.title = translations[lang][key];
+                    } else {
+                        el.innerHTML = translations[lang][key];
+                    }
+                }
+            });
+
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[lang][key]) {
+                    el.placeholder = translations[lang][key];
+                }
+            });
+
+            document.getElementById('lang-sv').classList.toggle('active', lang === 'sv');
+            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+        }
+
+        function initLanguage() {
+            let savedLang = null;
+            try {
+                savedLang = localStorage.getItem('quinzai_lang');
+            } catch (e) {}
+
+            if (savedLang && (savedLang === 'sv' || savedLang === 'en')) {
+                setLanguage(savedLang);
+            } else {
+                const userLang = navigator.language || navigator.userLanguage;
+                if (userLang.toLowerCase().startsWith('sv')) {
+                    setLanguage('sv');
+                } else {
+                    setLanguage('en');
+                }
+            }
+            checkMissingKeys();
+        }
+
+        document.getElementById('lang-sv').addEventListener('click', (e) => {
+            e.preventDefault();
+            setLanguage('sv');
+        });
+        document.getElementById('lang-en').addEventListener('click', (e) => {
+            e.preventDefault();
+            setLanguage('en');
+        });
+
+        initLanguage();
+
+        document.getElementById('waitlist-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const submitBtn = document.getElementById('submit-btn');
+            const successDiv = document.getElementById('form-success');
+            const errorDiv = document.getElementById('form-error');
+            
+            errorDiv.classList.add('hidden');
+            submitBtn.disabled = true;
+            submitBtn.textContent = translations[currentLang]["submit_btn_sending"];
+
+            const formData = {
+                email: document.getElementById('email').value,
+                device: document.getElementById('device').value,
+                beta: document.getElementById('beta').checked,
+                consent: document.getElementById('consent').checked,
+                lang: currentLang,
+                // Varifrån besökaren kom (?k=swedroid i inläggslänken) — mäter vilken kanal som fungerar.
+                kalla: (new URLSearchParams(location.search).get('k') || '').slice(0, 40),
+                website: document.getElementById('website').value // robotfälla, ska vara tom
+            };
+
+            try {
+                if (!FORM_ENDPOINT) throw new Error("FORM_ENDPOINT är inte konfigurerad");
+                // text/plain: Apps Script svarar inte på CORS-förfrågan (OPTIONS) som application/json utlöser.
+                const response = await fetch(FORM_ENDPOINT, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify(formData)
+                });
+                const svar = await response.json().catch(() => ({}));
+                // Tack bara när servern uttryckligen bekräftat — aldrig ett falskt "tack".
+                if (response.ok && svar.ok === true) {
+                    form.classList.add('hidden');
+                    successDiv.classList.remove('hidden');
+                } else {
+                    throw new Error('Servern bekräftade inte: ' + (svar.fel || response.status));
+                }
+            } catch (error) {
+                console.error("Formulärfel:", error);
+                errorDiv.classList.remove('hidden');
+                submitBtn.disabled = false;
+                submitBtn.textContent = translations[currentLang]["submit_btn"];
+            }
+        });
+    </script>
+</body>
+</html>
