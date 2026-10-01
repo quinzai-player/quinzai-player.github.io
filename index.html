@@ -363,18 +363,36 @@
             try {
                 if (!FORM_ENDPOINT) throw new Error("FORM_ENDPOINT är inte konfigurerad");
                 // text/plain: Apps Script svarar inte på CORS-förfrågan (OPTIONS) som application/json utlöser.
-                const response = await fetch(FORM_ENDPOINT, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                    body: JSON.stringify(formData)
-                });
-                const svar = await response.json().catch(() => ({}));
+                // Kallstart hos Google kan ta ~60 s och ge ett obegripligt första svar (uppmätt 2026-10-01),
+                // så vi försöker igen. Säkert: servern lägger inte till samma e-post två gånger.
+                const skicka = async () => {
+                    const avbryt = new AbortController();
+                    const timer = setTimeout(() => avbryt.abort(), 75000);
+                    try {
+                        const r = await fetch(FORM_ENDPOINT, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                            body: JSON.stringify(formData),
+                            signal: avbryt.signal
+                        });
+                        const s = await r.json().catch(() => ({}));
+                        return { ok: r.ok && s.ok === true && !s.tjanst, fel: s.fel || r.status };
+                    } catch (err) {
+                        return { ok: false, fel: String(err) };
+                    } finally {
+                        clearTimeout(timer);
+                    }
+                };
+                let svar = await skicka();
+                for (let forsok = 2; !svar.ok && forsok <= 3 && svar.fel !== 'ogiltig e-post' && svar.fel !== 'samtycke saknas'; forsok++) {
+                    svar = await skicka();
+                }
                 // Tack bara när servern uttryckligen bekräftat — aldrig ett falskt "tack".
-                if (response.ok && svar.ok === true) {
+                if (svar.ok) {
                     form.classList.add('hidden');
                     successDiv.classList.remove('hidden');
                 } else {
-                    throw new Error('Servern bekräftade inte: ' + (svar.fel || response.status));
+                    throw new Error('Servern bekräftade inte: ' + svar.fel);
                 }
             } catch (error) {
                 console.error("Formulärfel:", error);
