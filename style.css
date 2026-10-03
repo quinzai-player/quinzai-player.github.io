@@ -420,3 +420,9 @@ footer p {
         padding-top: 24px;
     }
 }
+
+.beta-cta { margin: 8px 0 20px; }
+.beta-cta a { color: #fff; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+
+.beta-cta { margin: 8px 0 20px; }
+.beta-cta a { color: #fff; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }

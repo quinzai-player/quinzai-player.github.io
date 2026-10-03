@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quinzai Player – Beta</title>
+    <meta name="description" content="Ladda ner betan av Quinzai Player för Android TV och telefon. Gratis, Pro ingår under betan.">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .beta { max-width: 760px; margin: 0 auto; padding: 48px 16px 64px; }
+        .beta h1 { font-size: 2rem; margin-bottom: 8px; }
+        .beta h2 { font-size: 1.25rem; margin: 32px 0 8px; }
+        .beta p, .beta li { margin-bottom: 10px; }
+        .beta ol, .beta ul { padding-left: 22px; }
+        .beta .meta { color: var(--text-muted); }
+        .beta a { color: var(--accent); }
+        .beta code { background: var(--bg-card); padding: 2px 6px; border-radius: 4px; overflow-wrap: anywhere; }
+        .beta .dl { display: inline-block; background: var(--accent); color: #fff; text-decoration: none;
+                    padding: 14px 24px; border-radius: 8px; font-weight: 700; margin: 12px 0; }
+        .beta .dl:hover { background: var(--accent-hover); }
+        .beta .card { background: var(--bg-card); border-radius: 8px; padding: 16px; margin: 16px 0; }
+        .beta hr { border: 0; border-top: 1px solid var(--text-muted); opacity: .3; margin: 48px 0; }
+    </style>
+</head>
+<body>
+<main class="beta">
+    <p class="meta"><a href="./">← Quinzai Player</a> · <a href="#en">English below</a></p>
+
+    <section lang="sv">
+        <h1>Quinzai Player – beta 0.1.0</h1>
+        <p>En mediaspelare för Android TV, Google TV och Android-telefon. Du lägger själv in en källa du har rätt att
+        använda — en Jellyfin-server, en M3U-spellista eller ett Xtream-konto. Appen innehåller inga kanaler eller filmer.</p>
+        <div class="card">
+            <strong>Under betan ingår Pro gratis</strong> (automatisk undertext på ditt språk och barnläge) till och med
+            31 januari 2027. Det enda vi ber om är att du berättar vad som fungerar och vad som inte gör det.
+        </div>
+
+        <a class="dl" href="dl/quinzai-player-beta1.apk" download>Ladda ner betan (APK, 11 MB)</a>
+        <p class="meta">Kräver Android 9 eller senare. SHA-256:
+            <code>a3438d80bf38cd5f2f811592a91eae90fa5db06eba4a5b3de2cefe869f7e2737</code></p>
+
+        <h2>Installera på telefonen</h2>
+        <ol>
+            <li>Tryck på knappen ovan i telefonens webbläsare.</li>
+            <li>Öppna den nedladdade filen. Första gången frågar Android om webbläsaren får installera appar — tillåt det.</li>
+            <li>Starta Quinzai Player och välj din källa.</li>
+        </ol>
+
+        <h2>Installera på Android TV / Google TV</h2>
+        <ol>
+            <li>Installera appen <strong>Downloader</strong> (av AFTVnews) från Google Play på TV:n.</li>
+            <li>Tillåt Downloader att installera okända appar: Inställningar → Appar → Säkerhet och begränsningar
+                (namnet varierar mellan modeller).</li>
+            <li>Skriv in adressen <code>quinzai-player.github.io/dl/quinzai-player-beta1.apk</code> i Downloader och
+                installera.</li>
+        </ol>
+
+        <h2>Säg vad du tycker</h2>
+        <p><a href="./#waitlist-form">Anmäl dig som betatestare</a> (kryssa i "beta") så hör vi av oss när nästa version finns,
+        eller mejla <a href="mailto:quinzai.master+player@proton.me">quinzai.master+player@proton.me</a>. Berätta gärna
+        vilken enhet och vilken typ av källa du använder.</p>
+
+        <h2>Bra att veta</h2>
+        <ul>
+            <li>Betan uppdateras inte automatiskt — nya versioner läggs upp här. När appen kommer till Google Play kan
+                du behöva avinstallera betan först.</li>
+            <li>Automatisk undertext hämtas från OpenSubtitles.com. Logga in med ditt eget gratiskonto där i
+                inställningarna för fler nedladdningar per dag.</li>
+            <li>Vi samlar inte in något om dig. Läs <a href="privacy.html">integritetspolicyn</a>.</li>
+            <li>Appen är byggd av en person i Sverige, med hjälp av AI-verktyg.</li>
+        </ul>
+    </section>
+
+    <hr>
+
+    <section lang="en" id="en">
+        <h1>Quinzai Player – beta 0.1.0</h1>
+        <p>A media player for Android TV, Google TV and Android phones. You add a source you are entitled to use — a
+        Jellyfin server, an M3U playlist or an Xtream account. The app contains no channels or movies.</p>
+        <div class="card">
+            <strong>Pro is free during the beta</strong> (automatic subtitles in your language and kids mode) until
+            31 January 2027. All we ask is that you tell us what works and what doesn't.
+        </div>
+
+        <a class="dl" href="dl/quinzai-player-beta1.apk" download>Download the beta (APK, 11 MB)</a>
+        <p class="meta">Requires Android 9 or later. SHA-256:
+            <code>a3438d80bf38cd5f2f811592a91eae90fa5db06eba4a5b3de2cefe869f7e2737</code></p>
+
+        <h2>Install on a phone</h2>
+        <ol>
+            <li>Tap the button above in your phone's browser.</li>
+            <li>Open the downloaded file. The first time, Android asks whether the browser may install apps — allow it.</li>
+            <li>Start Quinzai Player and choose your source.</li>
+        </ol>
+
+        <h2>Install on Android TV / Google TV</h2>
+        <ol>
+            <li>Install the <strong>Downloader</strong> app (by AFTVnews) from Google Play on the TV.</li>
+            <li>Allow Downloader to install unknown apps: Settings → Apps → Security &amp; restrictions (wording varies by model).</li>
+            <li>Enter <code>quinzai-player.github.io/dl/quinzai-player-beta1.apk</code> in Downloader and install.</li>
+        </ol>
+
+        <h2>Tell us what you think</h2>
+        <p><a href="./#waitlist-form">Sign up as a beta tester</a> (tick "beta") and we'll let you know about the next version,
+        or email <a href="mailto:quinzai.master+player@proton.me">quinzai.master+player@proton.me</a>. Please mention your
+        device and the kind of source you use.</p>
+
+        <h2>Good to know</h2>
+        <ul>
+            <li>The beta does not update itself — new versions are posted here. When the app reaches Google Play you may
+                need to uninstall the beta first.</li>
+            <li>Automatic subtitles come from OpenSubtitles.com. Sign in with your own free account there in settings for
+                more downloads per day.</li>
+            <li>We collect nothing about you. Read the <a href="privacy.html">privacy policy</a>.</li>
+            <li>The app is built by one person in Sweden, with the help of AI tools.</li>
+        </ul>
+    </section>
+</main>
+</body>
+</html>
