@@ -3,260 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="title">Quinzai Player – Väntelista</title>
+    <meta name="theme-color" content="#0E0B14">
+    <title data-i18n="title">Quinzai Player – undertext automatiskt</title>
+    <link rel="preload" as="image" href="img/hero-kvall.jpg">
     <link rel="stylesheet" href="style.css">
-    <link rel="preload" as="image" href="img/hero-bio.jpg">
 </head>
 <body>
     <div class="lang-switch-container">
         <div class="container lang-switch">
-            <button type="button" id="lang-sv" class="active">SV</button>
-            <span>|</span>
-            <button type="button" id="lang-en">EN</button>
+            <button type="button" id="lang-sv" class="active" aria-label="Svenska">SV</button>
+            <span aria-hidden="true">/</span>
+            <button type="button" id="lang-en" aria-label="English">EN</button>
         </div>
     </div>
 
     <header class="hero">
-        <div class="hero-bg">
-            <img src="img/hero-bio.jpg" alt="" role="presentation">
-            <div class="hero-scrim"></div>
-        </div>
-        <div class="container">
-            <h1 data-i18n="hero_title">Quinzai Player</h1>
-            <p class="subtitle" data-i18n="hero_subtitle">En modern mediaspelare för Android TV och telefon. Du tar med dina egna källor, vi sköter upplevelsen.</p>
-            <p class="beta-cta"><a href="beta.html" data-i18n="hero_beta_cta">Betan finns ute – ladda ner och prova gratis, Pro ingår →</a></p>
-            <form id="waitlist-form" class="signup-form">
-                <input type="email" id="email" name="email" placeholder="Din e-postadress" data-i18n-placeholder="email_placeholder" required>
-                
-                <div class="form-group">
-                    <label for="device" data-i18n="device_label">Vilken enhet använder du främst?</label>
-                    <select id="device" name="device" required>
-                        <option value="" disabled selected data-i18n="device_option_default">Välj enhet...</option>
-                        <option value="Android TV" data-i18n="device_option_tv">Android TV</option>
-                        <option value="Google TV-dongel" data-i18n="device_option_google">Google TV-dongel</option>
-                        <option value="Android-telefon" data-i18n="device_option_phone">Android-telefon</option>
-                        <option value="Annat" data-i18n="device_option_other">Annat</option>
-                    </select>
-                </div>
-                
-                <div class="checkbox-group">
-                    <label>
-                        <input type="checkbox" id="beta" name="beta">
-                        <span data-i18n="beta_label">Jag vill vara betatestare</span>
-                    </label>
-                </div>
-
-                <div class="checkbox-group">
-                    <label>
-                        <input type="checkbox" id="consent" name="consent" required>
-                        <span data-i18n="consent_label">Vi sparar bara din e-post för att meddela när appen släpps. Avregistrera när som helst. <a href="#integritet">Läs om integritet</a>.</span>
-                    </label>
-                </div>
-                
-                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-                <button type="submit" id="submit-btn" data-i18n="submit_btn">Skriv upp mig</button>
-            </form>
-            <div id="form-success" class="hidden">
-                <h2 data-i18n="success_title">Tack för din anmälan!</h2>
-                <p data-i18n="success_text">Vi hör av oss när vi har nyheter att dela.</p>
+        <div class="container hero-content">
+            <p class="eyebrow" data-i18n="hero_eyebrow">Gratis beta · Android TV och mobil</p>
+            <h1 data-i18n="hero_title">Tryck play. Undertexten finns redan.</h1>
+            <p class="hero-subtitle" data-i18n="hero_subtitle">Quinzai Player spelar din egen Jellyfin-, M3U- eller Xtream-källa och hämtar svensk undertext automatiskt. Fungerar på Google TV och i mobilen.</p>
+            <div class="hero-actions">
+                <a class="button button-primary" href="beta.html" data-i18n="hero_cta">Ladda ner betan gratis</a>
+                <a class="film-link" href="#film" data-i18n="hero_film">Se filmen (70 s)</a>
             </div>
-            <div id="form-error" class="hidden">
-                <p class="error-text" data-i18n="error_text">Något gick fel, försök igen senare.</p>
-            </div>
+            <p class="hero-note" data-i18n="hero_note">Pro ingår gratis under betan, till 31 januari 2027.</p>
         </div>
     </header>
 
-    <section class="hooks">
-        <div class="container hooks-grid">
-            <div class="card">
-                <h3 data-i18n="hook1_title">Undertexter på ditt språk — automatiskt</h3>
-                <p data-i18n="hook1_text">Spelaren väljer rätt ljudspår och undertexter åt dig. Byggd i Sverige, svenska först. AI-genererad undertext planeras.</p>
+    <main>
+        <section id="film" class="section film-section">
+            <div class="container narrow">
+                <h2 data-i18n="film_label">Se hur det fungerar</h2>
+                <div class="video-frame">
+                    <video id="film-video" controls preload="none" poster="film/poster.jpg" width="1920" height="1080" playsinline>
+                        <source id="film-source" src="film/quinzai-sv.mp4" type="video/mp4">
+                    </video>
+                </div>
             </div>
-            <div class="card">
-                <h3 data-i18n="hook2_title">Modern startsida</h3>
-                <p data-i18n="hook2_text">Inga fler ändlösa mapplistor. Få en snygg översikt med affischer, rader och "fortsätt titta"-funktionalitet.</p>
-            </div>
-            <div class="card">
-                <h3 data-i18n="hook3_title">För fjärrkontroll & finger</h3>
-                <p data-i18n="hook3_text">Samma rena gränssnitt fungerar lika bra på din TV med fjärrkontroll som på din telefon med touch.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="how-it-works">
-        <div class="container">
-            <h2 data-i18n="how_title">Så funkar det</h2>
-            <div class="steps-grid">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h4 data-i18n="step1_title">Ladda ner appen</h4>
-                    <p data-i18n="step1_text">Installera Quinzai Player på din Android TV eller telefon.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h4 data-i18n="step2_title">Lägg till dina källor</h4>
-                    <p data-i18n="step2_text">Mata in din egen M3U-spellista eller Xtream-inloggning. (Stöd för Jellyfin kommer framöver).</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h4 data-i18n="step3_title">Börja titta</h4>
-                    <p data-i18n="step3_text">Appen bygger upp en modern startsida baserat på ditt material.</p>
+        <section class="section how-section">
+            <div class="container">
+                <h2 data-i18n="how_title">Så funkar det</h2>
+                <div class="steps-grid">
+                    <article class="step"><span class="step-number" aria-hidden="true">1</span><h3 data-i18n="step1_title">Lägg in din källa</h3><p data-i18n="step1_text">Jellyfin, M3U eller Xtream.</p></article>
+                    <article class="step"><span class="step-number" aria-hidden="true">2</span><h3 data-i18n="step2_title">Välj språk</h3><p data-i18n="step2_text">Svenska först, fler språk finns.</p></article>
+                    <article class="step"><span class="step-number" aria-hidden="true">3</span><h3 data-i18n="step3_title">Tryck play</h3><p data-i18n="step3_text">Undertexten hämtas automatiskt.</p></article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="faq">
-        <div class="container">
+        <section class="section benefits-section">
+            <div class="container">
+                <h2 data-i18n="benefits_title">Allt kring själva tittandet</h2>
+                <div class="benefits-grid">
+                    <article class="benefit-card"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="9" width="38" height="28" rx="4"/><path d="M13 20h22M13 26h15M18 42h12"/></svg><h3 data-i18n="benefit1_title">Automatisk undertext</h3><p data-i18n="benefit1_text">Undertexten hämtas på ditt språk när du spelar upp.</p></article>
+                    <article class="benefit-card"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="7" width="38" height="34" rx="4"/><path d="M11 15h26M11 22h8v11h-8zM24 22h6v11h-6zM35 22h4v11h-4z"/></svg><h3 data-i18n="benefit2_title">En startsida som känns som en streamingtjänst</h3><p data-i18n="benefit2_text">Hitta det du vill se i en tydlig översikt.</p></article>
+                    <article class="benefit-card"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="8" y="20" width="32" height="23" rx="4"/><path d="M15 20v-7a9 9 0 0 1 18 0v7M24 29v6"/></svg><h3 data-i18n="benefit3_title">Barnläge med PIN</h3><p data-i18n="benefit3_text">En egen vy för barn, skyddad med PIN.</p></article>
+                </div>
+                <p class="benefits-note" data-i18n="benefits_note">Samma app på TV:n och i mobilen.</p>
+            </div>
+        </section>
+
+        <section class="mood-section">
+            <img src="img/par-soffa.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async">
+            <div class="mood-overlay"><div class="container"><h2 data-i18n="mood_text">Fredagskväll. Ingen letar undertext.</h2></div></div>
+        </section>
+
+        <section class="section comparison-section">
+            <div class="container">
+                <h2 data-i18n="compare_title">En ärlig jämförelse</h2>
+                <table>
+                    <thead><tr><th scope="col" data-i18n="compare_feature">Funktion</th><th scope="col" data-i18n="compare_ours">Quinzai Player</th><th scope="col" data-i18n="compare_tivi">TiviMate</th><th scope="col" data-i18n="compare_jelly">Officiella Jellyfin-appen</th></tr></thead>
+                    <tbody>
+                        <tr><th scope="row" data-i18n="compare_row1">Automatisk undertext på ditt språk</th><td><span class="mobile-label" data-i18n="compare_ours">Quinzai Player</span><span data-i18n="compare_row1_ours">Ja</span></td><td><span class="mobile-label" data-i18n="compare_tivi">TiviMate</span><span data-i18n="compare_row1_tivi">Nej, manuell sökning</span></td><td><span class="mobile-label" data-i18n="compare_jelly">Officiella Jellyfin-appen</span><span data-i18n="compare_row1_jelly">Via serverplugin</span></td></tr>
+                        <tr><th scope="row" data-i18n="compare_row2">Jellyfin, M3U och Xtream i samma app</th><td><span class="mobile-label" data-i18n="compare_ours">Quinzai Player</span><span data-i18n="compare_row2_ours">Ja</span></td><td><span class="mobile-label" data-i18n="compare_tivi">TiviMate</span><span data-i18n="compare_row2_tivi">M3U + Xtream</span></td><td><span class="mobile-label" data-i18n="compare_jelly">Officiella Jellyfin-appen</span><span data-i18n="compare_row2_jelly">Bara Jellyfin</span></td></tr>
+                        <tr><th scope="row" data-i18n="compare_row3">Barnläge med PIN</th><td><span class="mobile-label" data-i18n="compare_ours">Quinzai Player</span><span data-i18n="compare_row3_ours">Ja</span></td><td><span class="mobile-label" data-i18n="compare_tivi">TiviMate</span><span data-i18n="compare_row3_tivi">Föräldralås</span></td><td><span class="mobile-label" data-i18n="compare_jelly">Officiella Jellyfin-appen</span><span data-i18n="compare_row3_jelly">Nej</span></td></tr>
+                        <tr><th scope="row" data-i18n="compare_row4">Pris</th><td><span class="mobile-label" data-i18n="compare_ours">Quinzai Player</span><span data-i18n="compare_row4_ours">Gratis beta, sedan ~99 kr/år</span></td><td><span class="mobile-label" data-i18n="compare_tivi">TiviMate</span><span data-i18n="compare_row4_tivi">~10 USD/år</span></td><td><span class="mobile-label" data-i18n="compare_jelly">Officiella Jellyfin-appen</span><span data-i18n="compare_row4_jelly">Gratis</span></td></tr>
+                    </tbody>
+                </table>
+                <p class="comparison-note" data-i18n="compare_note">Uppgifter om andra appar från deras butikssidor, oktober 2026.</p>
+            </div>
+        </section>
+
+        <section class="beta-truth-section"><div class="container narrow"><p data-i18n="beta_truth">Byggd i Sverige av en ensam utvecklare. Det här är en beta, så säg gärna vad som inte fungerar. Du når mig direkt på mejl.</p></div></section>
+
+        <section class="section faq-section"><div class="container narrow">
             <h2 data-i18n="faq_title">Vanliga frågor</h2>
-            <div class="faq-item">
-                <h4 data-i18n="faq1_q">Är det lagligt?</h4>
-                <p data-i18n="faq1_a">Ja. Appen innehåller inga kanaler, filmer eller spellistor. Du använder dina egna källor som du har rätt till.</p>
-            </div>
-            <div class="faq-item">
-                <h4 data-i18n="faq2_q">Vilka enheter stöds?</h4>
-                <p data-i18n="faq2_a">Appen är byggd för Android TV, Google TV-enheter (som Chromecast med Google TV) samt Android-telefoner.</p>
-            </div>
-            <div class="faq-item">
-                <h4 data-i18n="faq3_q">Vad kostar det?</h4>
-                <p data-i18n="faq3_a">Basversionen planeras att vara gratis. En Pro-version med extra funktioner planeras kosta cirka 299–399 kr/år.</p>
-            </div>
-            <div class="faq-item">
-                <h4 data-i18n="faq4_q">Vad händer med min e-post?</h4>
-                <p data-i18n="faq4_a">Vi sparar bara din e-post för att meddela när appen släpps. Avregistrera när som helst.</p>
-            </div>
-        </div>
-    </section>
+            <details><summary data-i18n="faq1_q">Ingår det kanaler eller filmer?</summary><p data-i18n="faq1_a">Nej, appen har inget innehåll; du använder källor du har rätt till.</p></details>
+            <details><summary data-i18n="faq2_q">Vilka enheter?</summary><p data-i18n="faq2_a">Android TV, Google TV och Android-telefon med Android 9 eller senare.</p></details>
+            <details><summary data-i18n="faq3_q">Kostar det något?</summary><p data-i18n="faq3_a">Betan är gratis och Pro ingår till 31 januari 2027.</p></details>
+            <details><summary data-i18n="faq4_q">Hur installerar jag på TV:n?</summary><p data-i18n="faq4_a">Se <a href="beta.html">installationsguiden för betan</a>.</p></details>
+            <details><summary data-i18n="faq5_q">Vad händer med mina uppgifter?</summary><p data-i18n="faq5_a">Läs vår <a href="privacy.html">integritetspolicy</a>.</p></details>
+            <details><summary data-i18n="faq6_q">Hur är appen byggd?</summary><p data-i18n="faq6_a">Med Kotlin och Jetpack Compose, av en utvecklare i Sverige som tar hjälp av AI-verktyg i kodningen. Varje version provas på riktiga TV-boxar och telefoner innan den läggs ut.</p></details>
+        </div></section>
 
-    <section id="integritet" class="privacy">
-        <div class="container">
-            <h2 data-i18n="privacy_title">Integritet</h2>
-            <ul>
-                <li data-i18n="privacy_what_why"><strong>Vad & varför:</strong> Vi sparar din e-post, vald enhet, betatestar-val och språk för att meddela dig när appen släpps eller bjuda in till beta.</li>
-                <li data-i18n="privacy_where"><strong>Var:</strong> I ett Google-kalkylark som ägs av utvecklaren (Google agerar personuppgiftsbiträde).</li>
-                <li data-i18n="privacy_how_long"><strong>Hur länge:</strong> Tills appen släppts plus 3 månader, eller tills du avregistrerar dig.</li>
-                <li data-i18n="privacy_rights"><strong>Dina rättigheter:</strong> Du kan när som helst begära radering eller registerutdrag via <a href="mailto:quinzai.master+player@proton.me">quinzai.master+player@proton.me</a>.</li>
-                <li data-i18n="privacy_no_tracking"><strong>Spårning:</strong> Sidan har inga spårare, inga cookies och vi delar eller säljer aldrig dina uppgifter.</li>
-            </ul>
-        </div>
-    </section>
+        <section id="waitlist" class="section waitlist-section"><div class="container narrow">
+            <h2 data-i18n="waitlist_title">Vill du veta när nästa version kommer?</h2>
+            <p class="waitlist-intro" data-i18n="waitlist_text">Skriv upp dig så hör vi av oss när det finns något nytt.</p>
+            <form id="waitlist-form" class="signup-form">
+                <label class="visually-hidden" for="email" data-i18n="email_label">E-postadress</label>
+                <input type="email" id="email" name="email" placeholder="Din e-postadress" data-i18n-placeholder="email_placeholder" required>
+                <div class="form-group"><label for="device" data-i18n="device_label">Vilken enhet använder du främst?</label><select id="device" name="device" required>
+                    <option value="" disabled selected data-i18n="device_option_default">Välj enhet...</option><option value="Android TV" data-i18n="device_option_tv">Android TV</option><option value="Google TV-dongel" data-i18n="device_option_google">Google TV-dongel</option><option value="Android-telefon" data-i18n="device_option_phone">Android-telefon</option><option value="Annat" data-i18n="device_option_other">Annat</option>
+                </select></div>
+                <div class="checkbox-group"><label><input type="checkbox" id="beta" name="beta"><span data-i18n="beta_label">Jag vill vara betatestare</span></label></div>
+                <div class="checkbox-group"><label><input type="checkbox" id="consent" name="consent" required><span data-i18n="consent_label">Vi sparar din e-post, valda enhet, betaval och språk för att kunna kontakta dig. Avregistrera dig när som helst. <a href="privacy.html">Läs om integritet</a>.</span></label></div>
+                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+                <button type="submit" id="submit-btn" data-i18n="submit_btn">Skriv upp mig</button>
+            </form>
+            <div id="form-success" class="hidden" role="status"><h2 data-i18n="success_title">Tack för din anmälan!</h2><p data-i18n="success_text">Vi hör av oss när vi har nyheter att dela.</p></div>
+            <div id="form-error" class="hidden" role="alert"><p class="error-text" data-i18n="error_text">Något gick fel, försök igen senare.</p></div>
+        </div></section>
+    </main>
 
-    <footer>
-        <div class="container">
-            <p><a href="#integritet" data-i18n="footer_privacy">Integritet</a></p>
-            <p data-i18n="footer_disclaimer1">Appen innehåller inga kanaler, filmer eller spellistor. Du använder dina egna källor som du har rätt till.</p>
-            <p class="legal-disclaimer" data-i18n="footer_disclaimer2">Bildmaterial i framtida marknadsföring är antingen mockups eller använder material under Creative Commons (t.ex. Blender Foundation, CC BY).</p>
-        </div>
-    </footer>
+    <footer><div class="container">
+        <nav><a href="privacy.html" data-i18n="footer_privacy">Integritet</a><span aria-hidden="true">·</span><a href="beta.html" data-i18n="footer_beta">Beta</a><span aria-hidden="true">·</span><span data-i18n="footer_contact">Kontakt:</span> <a href="mailto:quinzai.master+player@proton.me">quinzai.master+player@proton.me</a></nav>
+        <p data-i18n="footer_disclaimer1">Appen innehåller inga kanaler, filmer eller spellistor. Du använder dina egna källor som du har rätt till.</p>
+        <p class="legal-disclaimer" data-i18n="footer_disclaimer2">Bildmaterial i framtida marknadsföring är antingen mockups eller använder material under Creative Commons (t.ex. Blender Foundation, CC BY).</p>
+    </div></footer>
 
     <script>
         const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbyOnk7mBHFnYYAZXWEl7iqb9NhIERLHbwqDv__wMBC4lIjnIBVjT9iAqRlnjYykd5_5/exec"; // publik skrivadress, ingen hemlighet
-
         const translations = {
-            sv: {
-                "title": "Quinzai Player – Väntelista",
-                "hero_title": "Quinzai Player",
-                "hero_subtitle": "En modern mediaspelare för Android TV och telefon. Du tar med dina egna källor, vi sköter upplevelsen.",
-                "email_placeholder": "Din e-postadress",
-                "device_label": "Vilken enhet använder du främst?",
-                "device_option_default": "Välj enhet...",
-                "device_option_tv": "Android TV",
-                "device_option_google": "Google TV-dongel",
-                "device_option_phone": "Android-telefon",
-                "device_option_other": "Annat",
-                "beta_label": "Jag vill vara betatestare",
-                "hero_beta_cta": "Betan finns ute – ladda ner och prova gratis, Pro ingår →",
-                "consent_label": "Vi sparar bara din e-post för att meddela när appen släpps. Avregistrera när som helst. <a href=\"#integritet\">Läs om integritet</a>.",
-                "submit_btn": "Skriv upp mig",
-                "submit_btn_sending": "Skickar...",
-                "success_title": "Tack för din anmälan!",
-                "success_text": "Vi hör av oss när vi har nyheter att dela.",
-                "error_text": "Något gick fel, försök igen senare.",
-                "hook1_title": "Undertexter på ditt språk — automatiskt",
-                "hook1_text": "Spelaren väljer rätt ljudspår och undertexter åt dig. Byggd i Sverige, svenska först. AI-genererad undertext planeras.",
-                "hook2_title": "Modern startsida",
-                "hook2_text": "Inga fler ändlösa mapplistor. Få en snygg översikt med affischer, rader och \"fortsätt titta\"-funktionalitet.",
-                "hook3_title": "För fjärrkontroll & finger",
-                "hook3_text": "Samma rena gränssnitt fungerar lika bra på din TV med fjärrkontroll som på din telefon med touch.",
-                "how_title": "Så funkar det",
-                "step1_title": "Ladda ner appen",
-                "step1_text": "Installera Quinzai Player på din Android TV eller telefon.",
-                "step2_title": "Lägg till dina källor",
-                "step2_text": "Mata in din egen M3U-spellista eller Xtream-inloggning. (Stöd för Jellyfin kommer framöver).",
-                "step3_title": "Börja titta",
-                "step3_text": "Appen bygger upp en modern startsida baserat på ditt material.",
-                "faq_title": "Vanliga frågor",
-                "faq1_q": "Är det lagligt?",
-                "faq1_a": "Ja. Appen innehåller inga kanaler, filmer eller spellistor. Du använder dina egna källor som du har rätt till.",
-                "faq2_q": "Vilka enheter stöds?",
-                "faq2_a": "Appen är byggd för Android TV, Google TV-enheter (som Chromecast med Google TV) samt Android-telefoner.",
-                "faq3_q": "Vad kostar det?",
-                "faq3_a": "Basversionen planeras att vara gratis. En Pro-version med extra funktioner planeras kosta cirka 299–399 kr/år.",
-                "faq4_q": "Vad händer med min e-post?",
-                                "faq4_a": "Vi sparar bara din e-post för att meddela när appen släpps. Avregistrera när som helst.",
-                "privacy_title": "Integritet",
-                "privacy_what_why": "<strong>Vad & varför:</strong> Vi sparar din e-post, vald enhet, betatestar-val och språk för att meddela dig när appen släpps eller bjuda in till beta.",
-                "privacy_where": "<strong>Var:</strong> I ett Google-kalkylark som ägs av utvecklaren (Google agerar personuppgiftsbiträde).",
-                "privacy_how_long": "<strong>Hur länge:</strong> Tills appen släppts plus 3 månader, eller tills du avregistrerar dig.",
-                "privacy_rights": "<strong>Dina rättigheter:</strong> Du kan när som helst begära radering eller registerutdrag via <a href=\"mailto:quinzai.master+player@proton.me\">quinzai.master+player@proton.me</a>.",
-                "privacy_no_tracking": "<strong>Spårning:</strong> Sidan har inga spårare, inga cookies och vi delar eller säljer aldrig dina uppgifter.",
-                "footer_privacy": "Integritet",
-                "footer_disclaimer1": "Appen innehåller inga kanaler, filmer eller spellistor. Du använder dina egna källor som du har rätt till.",
-                "footer_disclaimer2": "Bildmaterial i framtida marknadsföring är antingen mockups eller använder material under Creative Commons (t.ex. Blender Foundation, CC BY)."
+            "sv": {
+                        "title": "Quinzai Player – undertext automatiskt",
+                        "hero_eyebrow": "Gratis beta · Android TV och mobil",
+                        "hero_title": "Tryck play. Undertexten finns redan.",
+                        "hero_subtitle": "Quinzai Player spelar din egen Jellyfin-, M3U- eller Xtream-källa och hämtar svensk undertext automatiskt. Fungerar på Google TV och i mobilen.",
+                        "hero_cta": "Ladda ner betan gratis",
+                        "hero_film": "Se filmen (70 s)",
+                        "hero_note": "Pro ingår gratis under betan, till 31 januari 2027.",
+                        "film_label": "Se hur det fungerar",
+                        "how_title": "Så funkar det",
+                        "step1_title": "Lägg in din källa",
+                        "step1_text": "Jellyfin, M3U eller Xtream.",
+                        "step2_title": "Välj språk",
+                        "step2_text": "Svenska först, fler språk finns.",
+                        "step3_title": "Tryck play",
+                        "step3_text": "Undertexten hämtas automatiskt.",
+                        "benefits_title": "Allt kring själva tittandet",
+                        "benefit1_title": "Automatisk undertext",
+                        "benefit1_text": "Undertexten hämtas på ditt språk när du spelar upp.",
+                        "benefit2_title": "En startsida som känns som en streamingtjänst",
+                        "benefit2_text": "Hitta det du vill se i en tydlig översikt.",
+                        "benefit3_title": "Barnläge med PIN",
+                        "benefit3_text": "En egen vy för barn, skyddad med PIN.",
+                        "benefits_note": "Samma app på TV:n och i mobilen.",
+                        "mood_text": "Fredagskväll. Ingen letar undertext.",
+                        "compare_title": "En ärlig jämförelse",
+                        "compare_feature": "Funktion",
+                        "compare_ours": "Quinzai Player",
+                        "compare_tivi": "TiviMate",
+                        "compare_jelly": "Officiella Jellyfin-appen",
+                        "compare_row1": "Automatisk undertext på ditt språk",
+                        "compare_row1_ours": "Ja",
+                        "compare_row1_tivi": "Nej, manuell sökning",
+                        "compare_row1_jelly": "Via serverplugin",
+                        "compare_row2": "Jellyfin, M3U och Xtream i samma app",
+                        "compare_row2_ours": "Ja",
+                        "compare_row2_tivi": "M3U + Xtream",
+                        "compare_row2_jelly": "Bara Jellyfin",
+                        "compare_row3": "Barnläge med PIN",
+                        "compare_row3_ours": "Ja",
+                        "compare_row3_tivi": "Föräldralås",
+                        "compare_row3_jelly": "Nej",
+                        "compare_row4": "Pris",
+                        "compare_row4_ours": "Gratis beta, sedan ~99 kr/år",
+                        "compare_row4_tivi": "~10 USD/år",
+                        "compare_row4_jelly": "Gratis",
+                        "compare_note": "Uppgifter om andra appar från deras butikssidor, oktober 2026.",
+                        "beta_truth": "Byggd i Sverige av en ensam utvecklare. Det här är en beta, så säg gärna vad som inte fungerar. Du når mig direkt på mejl.",
+                        "faq_title": "Vanliga frågor",
+                        "faq1_q": "Ingår det kanaler eller filmer?",
+                        "faq1_a": "Nej, appen har inget innehåll; du använder källor du har rätt till.",
+                        "faq2_q": "Vilka enheter?",
+                        "faq2_a": "Android TV, Google TV och Android-telefon med Android 9 eller senare.",
+                        "faq3_q": "Kostar det något?",
+                        "faq3_a": "Betan är gratis och Pro ingår till 31 januari 2027.",
+                        "faq4_q": "Hur installerar jag på TV:n?",
+                        "faq4_a": "Se <a href=\"beta.html\">installationsguiden för betan</a>.",
+                        "faq5_q": "Vad händer med mina uppgifter?",
+                        "faq5_a": "Läs vår <a href=\"privacy.html\">integritetspolicy</a>.",
+                        "faq6_q": "Hur är appen byggd?",
+                        "faq6_a": "Med Kotlin och Jetpack Compose, av en utvecklare i Sverige som tar hjälp av AI-verktyg i kodningen. Varje version provas på riktiga TV-boxar och telefoner innan den läggs ut.",
+                        "waitlist_title": "Vill du veta när nästa version kommer?",
+                        "waitlist_text": "Skriv upp dig så hör vi av oss när det finns något nytt.",
+                        "email_placeholder": "Din e-postadress",
+                        "email_label": "E-postadress",
+                        "device_label": "Vilken enhet använder du främst?",
+                        "device_option_default": "Välj enhet...",
+                        "device_option_tv": "Android TV",
+                        "device_option_google": "Google TV-dongel",
+                        "device_option_phone": "Android-telefon",
+                        "device_option_other": "Annat",
+                        "beta_label": "Jag vill vara betatestare",
+                        "consent_label": "Vi sparar din e-post, valda enhet, betaval och språk för att kunna kontakta dig. Avregistrera dig när som helst. <a href=\"privacy.html\">Läs om integritet</a>.",
+                        "submit_btn": "Skriv upp mig",
+                        "submit_btn_sending": "Skickar...",
+                        "success_title": "Tack för din anmälan!",
+                        "success_text": "Vi hör av oss när vi har nyheter att dela.",
+                        "error_text": "Något gick fel, försök igen senare.",
+                        "footer_privacy": "Integritet",
+                        "footer_beta": "Beta",
+                        "footer_contact": "Kontakt:",
+                        "footer_disclaimer1": "Appen innehåller inga kanaler, filmer eller spellistor. Du använder dina egna källor som du har rätt till.",
+                        "footer_disclaimer2": "Bildmaterial i framtida marknadsföring är antingen mockups eller använder material under Creative Commons (t.ex. Blender Foundation, CC BY)."
             },
-            en: {
-                "title": "Quinzai Player – Waitlist",
-                "hero_title": "Quinzai Player",
-                "hero_subtitle": "A modern media player for Android TV and phone. You bring your own sources, we handle the experience.",
-                "email_placeholder": "Your email address",
-                "device_label": "Which device do you primarily use?",
-                "device_option_default": "Select device...",
-                "device_option_tv": "Android TV",
-                "device_option_google": "Google TV dongle",
-                "device_option_phone": "Android phone",
-                "device_option_other": "Other",
-                "beta_label": "I want to be a beta tester",
-                "hero_beta_cta": "The beta is out – download and try it free, Pro included →",
-                "consent_label": "We only save your email to notify you when the app is released. Unsubscribe at any time. <a href=\"#integritet\">Read our privacy policy</a>.",
-                "submit_btn": "Sign me up",
-                "submit_btn_sending": "Sending...",
-                "success_title": "Thanks for signing up!",
-                "success_text": "We'll be in touch when we have news to share.",
-                "error_text": "Something went wrong, please try again later.",
-                "hook1_title": "Subtitles in your language — automatically",
-                "hook1_text": "The player picks the right audio track and subtitles for you. Made in Sweden, with Swedish fully supported from day one. AI-generated subtitles are planned.",
-                "hook2_title": "Modern home screen",
-                "hook2_text": "No more endless folder lists. Get a beautiful overview with posters, rows, and \"continue watching\" functionality.",
-                "hook3_title": "For remote & touch",
-                "hook3_text": "The same clean interface works just as well on your TV with a remote as on your phone with touch.",
-                "how_title": "How it works",
-                "step1_title": "Download the app",
-                "step1_text": "Install Quinzai Player on your Android TV or phone.",
-                "step2_title": "Add your sources",
-                "step2_text": "Enter your own M3U playlist or Xtream login. (Jellyfin support is coming later).",
-                "step3_title": "Start watching",
-                "step3_text": "The app builds a modern home screen from your own content.",
-                "faq_title": "Frequently Asked Questions",
-                "faq1_q": "Is it legal?",
-                "faq1_a": "Yes. The app does not contain any channels, movies, or playlists. You use your own sources that you have the right to.",
-                "faq2_q": "Which devices are supported?",
-                "faq2_a": "The app is built for Android TV, Google TV devices (like Chromecast with Google TV), and Android phones.",
-                "faq3_q": "How much does it cost?",
-                "faq3_a": "The base version is planned to be free. A Pro version with extra features is planned to cost around €25–35 per year.",
-                "faq4_q": "What happens to my email?",
-                                "faq4_a": "We only save your email to notify you when the app is released. Unsubscribe at any time.",
-                "privacy_title": "Privacy",
-                "privacy_what_why": "<strong>What & why:</strong> We save your email, selected device, beta tester choice, and language to notify you when the app is released or invite you to the beta.",
-                "privacy_where": "<strong>Where:</strong> In a Google Spreadsheet owned by the developer (Google acts as data processor).",
-                "privacy_how_long": "<strong>How long:</strong> Until the app is released plus 3 months, or until you unsubscribe.",
-                "privacy_rights": "<strong>Your rights:</strong> You can request deletion or a copy of your data at any time via <a href=\"mailto:quinzai.master+player@proton.me\">quinzai.master+player@proton.me</a>.",
-                "privacy_no_tracking": "<strong>Tracking:</strong> This site uses no trackers, no cookies, and we never share or sell your data.",
-                "footer_privacy": "Privacy Policy",
-                "footer_disclaimer1": "The app does not contain any channels, movies, or playlists. You use your own sources that you have the right to.",
-                "footer_disclaimer2": "Images in future marketing are either mockups or use material under Creative Commons (e.g., Blender Foundation, CC BY)."
+            "en": {
+                        "title": "Quinzai Player – subtitles, automatically",
+                        "hero_eyebrow": "Free beta · Android TV and mobile",
+                        "hero_title": "Press play. The subtitles are already there.",
+                        "hero_subtitle": "Quinzai Player plays your own Jellyfin, M3U or Xtream source and fetches subtitles in your language automatically. Works on Google TV and your phone.",
+                        "hero_cta": "Download the free beta",
+                        "hero_film": "Watch the film (70 s)",
+                        "hero_note": "Pro is free during the beta, until 31 January 2027.",
+                        "film_label": "See how it works",
+                        "how_title": "How it works",
+                        "step1_title": "Add your source",
+                        "step1_text": "Jellyfin, M3U or Xtream.",
+                        "step2_title": "Choose a language",
+                        "step2_text": "Swedish first, with more languages available.",
+                        "step3_title": "Press play",
+                        "step3_text": "Subtitles are fetched automatically.",
+                        "benefits_title": "The little things around watching",
+                        "benefit1_title": "Automatic subtitles",
+                        "benefit1_text": "Subtitles are fetched in your language when you play.",
+                        "benefit2_title": "A home screen that feels like a streaming service",
+                        "benefit2_text": "Find what you want to watch in a clear overview.",
+                        "benefit3_title": "Kids mode with a PIN",
+                        "benefit3_text": "A separate view for kids, protected by a PIN.",
+                        "benefits_note": "The same app on your TV and phone.",
+                        "mood_text": "Friday night. Nobody hunts for subtitles.",
+                        "compare_title": "An honest comparison",
+                        "compare_feature": "Feature",
+                        "compare_ours": "Quinzai Player",
+                        "compare_tivi": "TiviMate",
+                        "compare_jelly": "Official Jellyfin app",
+                        "compare_row1": "Automatic subtitles in your language",
+                        "compare_row1_ours": "Yes",
+                        "compare_row1_tivi": "No, manual search",
+                        "compare_row1_jelly": "Via server plugin",
+                        "compare_row2": "Jellyfin, M3U and Xtream in one app",
+                        "compare_row2_ours": "Yes",
+                        "compare_row2_tivi": "M3U + Xtream",
+                        "compare_row2_jelly": "Jellyfin only",
+                        "compare_row3": "Kids mode with a PIN",
+                        "compare_row3_ours": "Yes",
+                        "compare_row3_tivi": "Parental lock",
+                        "compare_row3_jelly": "No",
+                        "compare_row4": "Price",
+                        "compare_row4_ours": "Free beta, then ~SEK 99/year",
+                        "compare_row4_tivi": "~USD 10/year",
+                        "compare_row4_jelly": "Free",
+                        "compare_note": "Information about other apps is from their store pages, October 2026.",
+                        "beta_truth": "Built in Sweden by a solo developer. This is a beta, so please tell me what does not work. You can reach me directly by email.",
+                        "faq_title": "Frequently asked questions",
+                        "faq1_q": "Are channels or films included?",
+                        "faq1_a": "No. The app contains no content; you use sources you have the right to access.",
+                        "faq2_q": "Which devices?",
+                        "faq2_a": "Android TV, Google TV and Android phones running Android 9 or later.",
+                        "faq3_q": "Does it cost anything?",
+                        "faq3_a": "The beta is free and Pro is included until 31 January 2027.",
+                        "faq4_q": "How do I install it on my TV?",
+                        "faq4_a": "See the <a href=\"beta.html\">beta installation guide</a>.",
+                        "faq5_q": "What happens to my data?",
+                        "faq5_a": "Read our <a href=\"privacy.html\">privacy policy</a>.",
+                        "faq6_q": "How is the app built?",
+                        "faq6_a": "With Kotlin and Jetpack Compose, by a developer in Sweden who uses AI tools to help with the coding. Every version is tested on real TV boxes and phones before it is released.",
+                        "waitlist_title": "Want to hear when the next version arrives?",
+                        "waitlist_text": "Sign up and we will let you know when there is news.",
+                        "email_placeholder": "Your email address",
+                        "email_label": "Email address",
+                        "device_label": "Which device do you primarily use?",
+                        "device_option_default": "Select device...",
+                        "device_option_tv": "Android TV",
+                        "device_option_google": "Google TV dongle",
+                        "device_option_phone": "Android phone",
+                        "device_option_other": "Other",
+                        "beta_label": "I want to be a beta tester",
+                        "consent_label": "We save your email, selected device, beta choice and language so we can contact you. Unsubscribe at any time. <a href=\"privacy.html\">Read our privacy policy</a>.",
+                        "submit_btn": "Sign me up",
+                        "submit_btn_sending": "Sending...",
+                        "success_title": "Thanks for signing up!",
+                        "success_text": "We will be in touch when we have news to share.",
+                        "error_text": "Something went wrong. Please try again later.",
+                        "footer_privacy": "Privacy",
+                        "footer_beta": "Beta",
+                        "footer_contact": "Contact:",
+                        "footer_disclaimer1": "The app contains no channels, films or playlists. You use your own sources that you have the right to access.",
+                        "footer_disclaimer2": "Images in future marketing are either mockups or use material under Creative Commons (e.g. Blender Foundation, CC BY)."
             }
-        };
-
+};
         let currentLang = 'sv';
 
         function checkMissingKeys() {
@@ -280,7 +318,7 @@
         function setLanguage(lang) {
             currentLang = lang;
             document.documentElement.lang = lang;
-            
+
             try {
                 localStorage.setItem('quinzai_lang', lang);
             } catch (e) {
@@ -308,6 +346,14 @@
 
             document.getElementById('lang-sv').classList.toggle('active', lang === 'sv');
             document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+            const video = document.getElementById('film-video');
+            const source = document.getElementById('film-source');
+            const src = lang === 'sv' ? 'film/quinzai-sv.mp4' : 'film/quinzai-en.mp4';
+            if (source.getAttribute('src') !== src) {
+                video.pause();
+                source.setAttribute('src', src);
+                video.load();
+            }
         }
 
         function initLanguage() {
@@ -342,12 +388,12 @@
 
         document.getElementById('waitlist-form').addEventListener('submit', async function(e) {
             e.preventDefault();
-            
+
             const form = e.target;
             const submitBtn = document.getElementById('submit-btn');
             const successDiv = document.getElementById('form-success');
             const errorDiv = document.getElementById('form-error');
-            
+
             errorDiv.classList.add('hidden');
             submitBtn.disabled = true;
             submitBtn.textContent = translations[currentLang]["submit_btn_sending"];
