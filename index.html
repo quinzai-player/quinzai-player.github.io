@@ -84,9 +84,9 @@
         <section class="section features-section" aria-labelledby="features-title">
             <div class="container">
                 <h2 id="features-title" data-i18n="features_title">Allt Quinzai Player kan</h2>
-                <div class="video-frame features-video">
-                    <video controls preload="none" poster="film/funktioner-poster.jpg" width="1920" height="1080" playsinline>
-                        <source src="film/funktioner-sv.mp4" type="video/mp4">
+                <div class="video-frame features-video" id="funktioner-ram">
+                    <video id="funktioner-video" controls preload="none" poster="film/funktioner-poster.jpg" width="1920" height="1080" playsinline>
+                        <source id="funktioner-source" src="film/funktioner-sv.mp4" type="video/mp4">
                     </video>
                 </div>
 
@@ -654,9 +654,24 @@
                 source.setAttribute('src', src);
                 video.load();
             }
+            // Funktionsvideon finns bara på svenska än — engelska besökare ska inte få svenskt tal (John 5/10:
+            // "allt måste vara på engelska där"). Fyll i 'en' när funktioner-en.mp4 finns.
+            const FUNKTIONER = { sv: 'film/funktioner-sv.mp4', en: null };
+            const fRam = document.getElementById('funktioner-ram');
+            const fVideo = document.getElementById('funktioner-video');
+            const fSource = document.getElementById('funktioner-source');
+            if (fRam && fVideo && fSource) {
+                fRam.classList.toggle('hidden', !FUNKTIONER[lang]);
+                if (FUNKTIONER[lang] && fSource.getAttribute('src') !== FUNKTIONER[lang]) {
+                    fVideo.pause(); fSource.setAttribute('src', FUNKTIONER[lang]); fVideo.load();
+                }
+            }
         }
 
         function initLanguage() {
+            // ?lang=en i forumlänkar vinner över allt annat (engelska trådar ska alltid landa på engelska).
+            const urlLang = new URLSearchParams(location.search).get('lang');
+            if (urlLang === 'sv' || urlLang === 'en') { setLanguage(urlLang); checkMissingKeys(); return; }
             let savedLang = null;
             try {
                 savedLang = localStorage.getItem('quinzai_lang');
