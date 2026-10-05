@@ -656,14 +656,15 @@
             }
             // Funktionsvideon finns bara på svenska än — engelska besökare ska inte få svenskt tal (John 5/10:
             // "allt måste vara på engelska där"). Fyll i 'en' när funktioner-en.mp4 finns.
-            const FUNKTIONER = { sv: 'film/funktioner-sv.mp4', en: null };
+            const FUNKTIONER = { sv: 'film/funktioner-sv.mp4', en: 'film/funktioner-en.mp4' };
+            const FUNKTIONER_AFFISCH = { sv: 'film/funktioner-poster.jpg', en: 'film/funktioner-en-poster.jpg' };
             const fRam = document.getElementById('funktioner-ram');
             const fVideo = document.getElementById('funktioner-video');
             const fSource = document.getElementById('funktioner-source');
             if (fRam && fVideo && fSource) {
                 fRam.classList.toggle('hidden', !FUNKTIONER[lang]);
                 if (FUNKTIONER[lang] && fSource.getAttribute('src') !== FUNKTIONER[lang]) {
-                    fVideo.pause(); fSource.setAttribute('src', FUNKTIONER[lang]); fVideo.load();
+                    fVideo.pause(); fVideo.poster = FUNKTIONER_AFFISCH[lang]; fSource.setAttribute('src', FUNKTIONER[lang]); fVideo.load();
                 }
             }
         }
