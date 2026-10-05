@@ -21,6 +21,22 @@
         .beta .card { background: var(--bg-card); border-radius: 8px; padding: 16px; margin: 16px 0; }
         .beta hr { border: 0; border-top: 1px solid var(--text-muted); opacity: .3; margin: 48px 0; }
     </style>
+    <!-- Besöksräknare utan cookies (GoatCounter, ingen personuppgift). Kanal = ?k= i inläggslänken. -->
+    <script>
+        window.qzHandelse = function (namn) {
+            var gc = window.goatcounter;
+            if (gc && gc.count) gc.count({ path: namn, event: true });
+            else (window.qzKo = window.qzKo || []).push(namn);
+        };
+        var qzK = (new URLSearchParams(location.search).get('k') || '').replace(/[^a-z0-9_-]/gi, '').slice(0, 40);
+        if (qzK) qzHandelse('kanal-' + qzK);
+        // Nedladdning av beta-APK:n = starkaste intressesignalen.
+        document.addEventListener('click', function (e) {
+            if (e.target.closest && e.target.closest('a.dl')) qzHandelse('nedladdning-' + (qzK || 'direkt'));
+        });
+    </script>
+    <script data-goatcounter="https://quinzai.goatcounter.com/count" async src="//gc.zgo.at/count.js"
+            onload="(window.qzKo || []).forEach(function (n) { goatcounter.count({ path: n, event: true }); })"></script>
 </head>
 <body>
 <main class="beta">

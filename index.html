@@ -7,6 +7,22 @@
     <title data-i18n="title">Quinzai Player – undertext automatiskt</title>
     <link rel="preload" as="image" href="img/hero-kvall.jpg">
     <link rel="stylesheet" href="style.css">
+    <!-- Besöksräknare utan cookies (GoatCounter, ingen personuppgift). Kanal = ?k= i inläggslänken. -->
+    <script>
+        window.qzHandelse = function (namn) {
+            var gc = window.goatcounter;
+            if (gc && gc.count) gc.count({ path: namn, event: true });
+            else (window.qzKo = window.qzKo || []).push(namn);
+        };
+        var qzK = (new URLSearchParams(location.search).get('k') || '').replace(/[^a-z0-9_-]/gi, '').slice(0, 40);
+        if (qzK) qzHandelse('kanal-' + qzK);
+        // Nedladdning av beta-APK:n = starkaste intressesignalen.
+        document.addEventListener('click', function (e) {
+            if (e.target.closest && e.target.closest('a.dl')) qzHandelse('nedladdning-' + (qzK || 'direkt'));
+        });
+    </script>
+    <script data-goatcounter="https://quinzai.goatcounter.com/count" async src="//gc.zgo.at/count.js"
+            onload="(window.qzKo || []).forEach(function (n) { goatcounter.count({ path: n, event: true }); })"></script>
 </head>
 <body>
     <div class="lang-switch-container">
@@ -722,6 +738,7 @@
                 }
                 // Tack bara när servern uttryckligen bekräftat — aldrig ett falskt "tack".
                 if (svar.ok) {
+                    window.qzHandelse && qzHandelse('anmalan-' + (qzK || 'direkt'));
                     form.classList.add('hidden');
                     successDiv.classList.remove('hidden');
                 } else {
