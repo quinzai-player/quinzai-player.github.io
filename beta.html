@@ -19,6 +19,8 @@
                     padding: 14px 24px; border-radius: 8px; font-weight: 700; margin: 12px 0; }
         .beta .dl:hover { background: var(--accent-hover); }
         .beta .card { background: var(--bg-card); border-radius: 8px; padding: 16px; margin: 16px 0; }
+        .beta video { width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 8px; margin: 8px 0 4px; background: #000; }
+        .beta .alt { font-size: .95em; }
         .beta hr { border: 0; border-top: 1px solid var(--text-muted); opacity: .3; margin: 48px 0; }
     </style>
     <!-- Besöksräknare utan cookies (GoatCounter, ingen personuppgift). Kanal = ?k= i inläggslänken. -->
@@ -40,18 +42,22 @@
 </head>
 <body>
 <main class="beta">
-    <p class="meta"><a href="./">← Quinzai Player</a> · <a href="#en">English below</a></p>
+    <p class="meta"><a href="./">← Quinzai Player</a> · <a href="#" id="byt-sprak">English</a></p>
 
-    <section lang="sv">
-        <h1>Quinzai Player – beta 2</h1>
+    <section lang="sv" id="sv">
+        <h1>Quinzai Player – beta 4</h1>
         <p>En mediaspelare för Android TV, Google TV och Android-telefon. Du lägger själv in en källa du har rätt att
         använda — en Jellyfin-server, en M3U-spellista eller ett Xtream-konto. Appen innehåller inga kanaler eller filmer.</p>
+        <video controls preload="none" playsinline poster="film/poster.jpg" width="1920" height="1080">
+            <source src="film/quinzai-sv.mp4" type="video/mp4">
+        </video>
         <div class="card">
             <strong>Under betan ingår Pro gratis</strong> (automatisk undertext på ditt språk och barnläge) till och med
             31 januari 2027. Det enda vi ber om är att du berättar vad som fungerar och vad som inte gör det.
         </div>
 
         <a class="dl" href="dl/quinzai-player-beta4.apk" download>Ladda ner betan (APK, 12 MB)</a>
+        <p class="alt">Vill du hellre vänta tills appen finns på Google Play? <a href="./?lang=sv#waitlist-form">Anmäl dig, så mejlar vi när den finns.</a></p>
         <p class="meta">Kräver Android 9 eller senare. SHA-256:
             <code>999677b4a512b90e720781d5e12db7d16d211e93d6839562ac909c64e96facb4</code></p>
 
@@ -76,7 +82,7 @@
             <li>En laddningsvy medan katalogen hämtas första gången, ett begripligt fel om Live-TV-synken misslyckas och en kompaktare sidomeny i liggande läge.</li>
             <li>Inställningarna visar bara det som gäller din källa.</li>
         </ul>
-        <p>Har du beta 1? Installera beta 2 ovanpå — inställningar och inloggning finns kvar.</p>
+        <p>Har du en tidigare beta? Installera beta 4 ovanpå — inställningar och inloggning finns kvar.</p>
 
         <h2>Installera på telefonen</h2>
         <ol>
@@ -110,18 +116,22 @@
         </ul>
     </section>
 
-    <hr>
+    <hr hidden>
 
     <section lang="en" id="en">
-        <h1>Quinzai Player – beta 2</h1>
+        <h1>Quinzai Player – beta 4</h1>
         <p>A media player for Android TV, Google TV and Android phones. You add a source you are entitled to use — a
         Jellyfin server, an M3U playlist or an Xtream account. The app contains no channels or movies.</p>
+        <video controls preload="none" playsinline poster="film/funktioner-en-poster.jpg" width="1920" height="1080">
+            <source src="film/funktioner-en.mp4" type="video/mp4">
+        </video>
         <div class="card">
             <strong>Pro is free during the beta</strong> (automatic subtitles in your language and kids mode) until
             31 January 2027. All we ask is that you tell us what works and what doesn't.
         </div>
 
         <a class="dl" href="dl/quinzai-player-beta4.apk" download>Download the beta (APK, 12 MB)</a>
+        <p class="alt">Rather wait for Google Play? <a href="./?lang=en#waitlist-form">Sign up and we'll email you when it's there.</a></p>
         <p class="meta">Requires Android 9 or later. SHA-256:
             <code>999677b4a512b90e720781d5e12db7d16d211e93d6839562ac909c64e96facb4</code></p>
 
@@ -146,7 +156,7 @@
             <li>A loading view while the catalogue is fetched the first time, a clear error if the live TV sync fails, and a more compact side menu in landscape.</li>
             <li>Settings only show what applies to your source.</li>
         </ul>
-        <p>Have beta 1? Install beta 2 on top — your settings and sign-in are kept.</p>
+        <p>Have an earlier beta? Install beta 4 on top — your settings and sign-in are kept.</p>
 
         <h2>Install on a phone</h2>
         <ol>
@@ -178,5 +188,25 @@
         </ul>
     </section>
 </main>
+<script>
+    // Ett språk i taget (konverteringsgranskning 5/10: båda staplade gav en lång, rörig sida).
+    // ?lang= eller #en vinner, annars sparat val, annars webbläsarens språk.
+    (function () {
+        var q = new URLSearchParams(location.search).get('lang'), sparat = null;
+        try { sparat = localStorage.getItem('quinzai_lang'); } catch (e) {}
+        var lang = (q === 'sv' || q === 'en') ? q : (location.hash === '#en' ? 'en'
+                 : (sparat === 'sv' || sparat === 'en') ? sparat
+                 : ((navigator.language || '').toLowerCase().indexOf('sv') === 0 ? 'sv' : 'en'));
+        function visa(l) {
+            document.getElementById('sv').hidden = l !== 'sv';
+            document.getElementById('en').hidden = l !== 'en';
+            document.documentElement.lang = l;
+            var b = document.getElementById('byt-sprak');
+            b.textContent = l === 'sv' ? 'English' : 'Svenska';
+            b.onclick = function (e) { e.preventDefault(); try { localStorage.setItem('quinzai_lang', l === 'sv' ? 'en' : 'sv'); } catch (x) {} visa(l === 'sv' ? 'en' : 'sv'); window.scrollTo(0, 0); };
+        }
+        visa(lang);
+    })();
+</script>
 </body>
 </html>
